@@ -64,8 +64,8 @@ local hi = {
     WinSeparator     = { fg = colors.bg_2, bg = none, bold = true },
     
     -- Statusbar (Transparente)
-    StatusLine       = { fg = colors.fg_1, bg = none },
-    StatusLineNC     = { fg = colors.dim_0, bg = none },
+    StatusLine       = { fg = colors.fg_1, bg = colors.bg_2 },
+    StatusLineNC     = { fg = colors.dim_0, bg = colors.bg_1 },
     WinBar           = { fg = colors.dim_0, bg = none },
 
     -- Cursor y Selecciones (Mantenemos fondo acá para que se vea)
