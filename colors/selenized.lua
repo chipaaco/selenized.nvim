@@ -1,5 +1,4 @@
 -- Copyright © 2024 Calin Don. All Rights Reserved.
--- Selenized Dark (Transparent Edition)
 
 vim.cmd.hi('clear')
 if vim.fn.exists('syntax_on') then
@@ -7,7 +6,6 @@ if vim.fn.exists('syntax_on') then
 end
 vim.g.colors_name = 'selenized'
 
--- Paleta exclusiva Dark
 local colors = {
     bg_1       = '#174956',
     bg_2       = '#325b66',
@@ -34,7 +32,6 @@ local colors = {
     br_violet  = '#bd96fa',
 }
 
--- Colores para la terminal integrada
 vim.g.terminal_color_0  = colors.bg_1
 vim.g.terminal_color_1  = colors.red
 vim.g.terminal_color_2  = colors.green
@@ -55,7 +52,6 @@ vim.g.terminal_color_15 = colors.fg_1
 local none = 'NONE'
 
 local hi = {
-    -- Interfaz General (Transparentes)
     Normal           = { fg = colors.fg_0, bg = none },
     SignColumn       = { fg = none, bg = none }, -- Símbolos del LSP
     LineNr           = { fg = colors.dim_0, bg = none }, -- Números
@@ -63,12 +59,10 @@ local hi = {
     FoldColumn       = { fg = none, bg = none },
     WinSeparator     = { fg = colors.bg_2, bg = none, bold = true },
     
-    -- Statusbar (Transparente)
     StatusLine       = { fg = colors.fg_1, bg = colors.bg_2 },
     StatusLineNC     = { fg = colors.dim_0, bg = colors.bg_1 },
     WinBar           = { fg = colors.dim_0, bg = none },
 
-    -- Cursor y Selecciones (Mantenemos fondo acá para que se vea)
     Cursor           = { fg = none, bg = none, reverse = true },
     CursorLine       = { fg = none, bg = colors.bg_1 },
     CursorColumn     = { fg = none, bg = colors.bg_1 },
@@ -76,19 +70,16 @@ local hi = {
     Visual           = { fg = none, bg = colors.bg_2 },
     MatchParen       = { fg = colors.br_yellow, bg = colors.bg_2, bold = true },
     
-    -- Búsqueda
     IncSearch        = { fg = colors.orange, bg = none, reverse = true },
     Search           = { fg = colors.yellow, bg = none, reverse = true },
     CurSearch        = { fg = colors.br_yellow, bg = none, reverse = true },
 
-    -- Flotantes y Menús
     Pmenu            = { fg = colors.dim_0, bg = colors.bg_1 },
     PmenuSel         = { fg = none, bg = colors.bg_2 },
     FloatBorder      = { fg = colors.bg_2, bg = none },
     NormalFloat      = { fg = colors.dim_0, bg = none },
     FloatTitle       = { fg = colors.dim_0, bg = none },
 
-    -- Sintaxis Básica
     Comment          = { fg = colors.dim_0, bg = none, italic = true },
     Constant         = { fg = colors.cyan, bg = none },
     String           = { link = 'Constant' },
@@ -106,14 +97,12 @@ local hi = {
     Error            = { fg = colors.red, bg = none, bold = true },
     Todo             = { fg = colors.magenta, bg = none, bold = true },
 
-    -- GitSigns
     GitSignsAdd      = { fg = colors.green, bg = none },
     GitSignsChange   = { fg = colors.blue, bg = none },
     GitSignsDelete   = { fg = colors.red, bg = none },
 
-    -- LSP Diagnostics (Transparentes)
     DiagnosticError  = { fg = colors.red, bg = none },
-    DiagnosticWarn   = { fg = colors.cyan, bg = none }, -- Mantenido como tu original
+    DiagnosticWarn   = { fg = colors.cyan, bg = none },
     DiagnosticInfo   = { fg = colors.cyan, bg = none },
     DiagnosticHint   = { fg = colors.yellow, bg = none },
     
@@ -122,17 +111,14 @@ local hi = {
     DiagnosticUnderlineInfo  = { underline = true, sp = colors.cyan },
     DiagnosticUnderlineHint  = { underline = true, sp = colors.yellow },
 
-    -- Lsp References
     LspReferenceText  = { bg = colors.bg_1 },
     LspReferenceRead  = { link = 'LspReferenceText' },
     LspReferenceWrite = { link = 'LspReferenceText' },
 }
 
--- Aplicar los grupos de colores
 for group, val in pairs(hi) do
     if type(val) == 'string' then
         val = { link = val }
     end
-    -- Fuerza el highlight para sobreescribir cualquier cosa por defecto
     vim.api.nvim_set_hl(0, group, val)
 end
